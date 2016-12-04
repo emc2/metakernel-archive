@@ -1,0 +1,8 @@
+COMPILER=icc
+KERNEL_ROOT=/home/common/programming/projects/kernel/
+KERNEL_ARCH=ia_32
+KERNEL_CPU=pentiumiii
+C_OBJS=thread_sched.o affinity_heap.o priority_heap.o scheduler.o exclusion.o rendezvous.o malloc.o sync.o rw_lock.o cow_table.o inv_page_table.o page_alloc.o page_cache.o phys_mem.o filesys.o vm_fault.o lru_page.o virt_mem.o util.o inode_cache.o inode.o panic.o static_alloc.o
+ARCH_OBJS=$(KERNEL_ARCH)_util.o $(KERNEL_ARCH)_cputabs.o $(KERNEL_ARCH)_interrupt.o $(KERNEL_ARCH)_meminit.o
+ASM_OBJS=$(KERNEL_ARCH)_spin_lock.o $(KERNEL_ARCH)_sync.o $(KERNEL_ARCH)_round.o $(KERNEL_ARCH)_virt_mem.o $(KERNEL_ARCH)_thread.o $(KERNEL_ARCH)_timer.o $(KERNEL_ARCH)_cpu.o $(KERNEL_ARCH)_context.o $(KERNEL_ARCH)_start.o $(KERNEL_ARCH)_mpinit.o $(KERNEL_ARCH)_int_handlers.o $(KERNEL_ARCH)_static_alloc.o $(KERNEL_ARCH)_cpuid.o
+OBJS=$(ASM_OBJS) $(ARCH_OBJS) $(C_OBJS)

@@ -1,0 +1,16 @@
+			The following things must be done
+
+Context:  Need to decide on the storage of contexts, and how to modify
+them.
+
+Architecture-specifics: Need page table stuff, among other things.
+
+Lazy address space switching.
+
+Signals:  Need to implement signals.
+
+Swap: Swap needs to be implemented.
+
+System Calls: System call framework must be created.
+
+ABI Tables and Syscall Lists:  The format of these must be decided.

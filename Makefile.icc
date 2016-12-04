@@ -1,0 +1,11 @@
+OFLAGS=-O3 -ipo -unroll -ansi_alias -align -restrict
+DFLAGS=-DARCH=$(KERNEL_ARCH) -DMULTITHREAD -DPAGE_COLOR -DSCHED_SPECIAL_MODES -DNULL_FILESYS_OPS -DNO_SWAP
+IFLAGS=-X -I. -idirafter$(KERNEL_ROOT)include/ -idirafter$(KERNEL_ROOT)/arch/include
+OBJFLAGS=-c
+EXEFLAGS=-opt_report_file report.opt -opt_report_level max -Wl,-x,-T kernel_$(KERNEL_ARCH).ld
+WFLAGS=-Wall -ansi
+ARCHFLAGS=-march=$(KERNEL_CPU) -std=c99 -nostdlib
+CC=icc
+CCFLAGS=$(OFLAGS) $(ARCHFLAGS) $(DFLAGS) $(IFLAGS) $(WFLAGS)
+CCOBJ=$(CC) $(OBJFLAGS) $(CCFLAGS)
+CCEXE=$(CC) $(CCFLAGS) $(EXEFLAGS)

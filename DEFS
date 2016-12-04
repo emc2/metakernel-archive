@@ -1,0 +1,32 @@
+			Kernel Compilation Parameters
+
+ARCH: The architecture for which to compile the kernel.
+
+MULTITHREAD: Causes a multithreaded kernel to be generated.
+Multithreaded kernels run on SMP architectures.  They have
+spinlock-based synchronization primitives, cpu-specific data,
+interprocessor interrupt stuff, and most importantly, a much more
+complicated scheduler.
+
+PAGE_COLOR: Causes the kernel to use a cache-colored page allocation
+scheme instead of blind allocation.  This increases the running time
+of page allocation from O(n) = k to O(n) = log(n), but should reduce
+cache misses.
+
+SCHED_SPECIAL_MODES: Causes the scheduler to support NO_RESCHED,
+EXCLUSIVE, and ATOMIC modes.  This drastically increased the
+complexity of the scheduler, and even worse, requires the use of
+syncronization in EVERY SINGLE run of the scheduler...
+
+FPU_DELAYED_SWITCH: On architectures that support it, allows the
+kernel to delay switching of floating-point state during a context
+switch.
+
+NULL_FILESYS_OPS: Allows creation of files without a filesystem
+backing them (inode zero specified as their backing store).
+Obviously, they do not survive a reboot.  Use this to implement easy
+pipes, message queues, and temp files...
+
+OFFSET_64: Forces all offsets to be 64 bits.  This may become required.
+
+NO_SWAP: Causes all swap code to be omitted from the kernel.

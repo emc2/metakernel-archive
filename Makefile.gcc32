@@ -1,0 +1,9 @@
+OFLAGS=-O6 -fomit-frame-pointer -fthread-jumps -funroll-loops -fstrength-reduce -fcse-follow-jumps -fcse-skip-blocks -frerun-cse-after-loop -fschedule-insns -fschedule-insns2 -fexpensive-optimizations -fforce-mem -fforce-addr -foptimize-sibling-calls -frerun-loop-opt -fgcse -fgcse-lm -fgcse-sm -foptimize-register-move -fsched-spec-load -fprefetch-loop-arrays -falign-functions=256 -falign-labels=64 -falign-loops=64 -falign-jumps=64 -frename-registers
+DFLAGS=-DARCH=$(KERNEL_ARCH) -DMULTITHREAD -DPAGE_COLOR -DSCHED_SPECIAL_MODES
+IFLAGS=-nostdinc -I. -I- -I$(KERNEL_ROOT)include/ -I$(KERNEL_ROOT)arch/include/
+OBJFLAGS=-c
+WFLAGS=-Wall
+ARCHFLAGS=-march=$(KERNEL_CPU) -mcpu=$(KERNEL_CPU) -std=c99 -ffreestanding
+CC=gcc32
+CCFLAGS=$(IFLAGS) $(DFLAGS) $(WFLAGS) $(ARCHFLAGS) $(OFLAGS)
+CCOBJ=$(CC) $(OBJFLAGS) $(CCFLAGS)
